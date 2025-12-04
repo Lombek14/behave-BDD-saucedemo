@@ -1,7 +1,14 @@
 @api
-Feature: Posts API
+Feature: JSONPlaceholder Posts API
 
-  Scenario: Get list of posts successfully
-    When I send a request to list posts
-    Then the API should return status code 200
-    And the response should contain a list of posts
+  Scenario Outline: Get posts by different IDs
+    When I send a GET request to "/posts/<post_id>"
+    Then the API should return status code <status_code>
+    And the response should have field "id"
+    And the response should match the posts schema
+
+    Examples:
+      | post_id | status_code |
+      | 1       | 200         |
+      | 50      | 200         |
+      | 100     | 200         |
