@@ -12,7 +12,7 @@ This project contains example automation using **Behave (Python BDD)**:
 Create and activate a virtual environment, then:
 
 ```bash
-pip install -r requirements.txt   # if you add one
+pip install -r requirements.txt   
 behave                # run all tests
 behave --tags=@api    # only API tests
 behave --tags=@ui     # only UI tests
