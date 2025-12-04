@@ -1,0 +1,7 @@
+echo venv/ > .gitignore
+echo __pycache__/ >> .gitignore
+echo *.pyc >> .gitignore
+echo .pytest_cache/ >> .gitignore
+echo *.log >> .gitignore
+echo .idea/ >> .gitignore
+echo .vscode/ >> .gitignore
