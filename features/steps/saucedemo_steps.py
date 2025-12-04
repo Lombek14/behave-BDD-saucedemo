@@ -33,7 +33,13 @@ def click_login_button(context):
     context.driver.find_element(By.ID, "login-button").click()
 
 
-@then('I should see the products page')
-def see_home_page(context):
-    Products_element: WebElement = context.driver.find_element(By.CLASS_NAME, "title")
-    assert Products_element.text == "Products"
+@then('I should see "{expected}" result')
+def step_validate_login_result(context, expected):
+    driver = context.driver
+
+    if expected == "Products page":
+        title = driver.find_element(By.CLASS_NAME, "title").text
+        assert title == "Products", "Products page was not displayed"
+    else:
+        error = driver.find_element(By.CSS_SELECTOR, "[data-test='error']")
+        assert expected in error.text, f"Expected '{expected}' in error, got: '{error.text}'"
